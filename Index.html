@@ -291,7 +291,7 @@
         let flag = this.state.currentstudent != null;
 
         let menu = <div className='optmenu'>
-          {!this.flagx() && <button id='add' title='Add student' onClick={this.addobc}><img src='images/add.png' alt='add'  /></button>}
+          {!this.flagx() && <button id='add' title='Add student' onClick={this.addobc}><i class="fab fa-github"></i></button>}
 
           {!this.flagx() && flag && <button id='delete' title='Delete student' onClick={this.deleteobc}><i className = "fas fa-sync-alt fa-spin"/></button>}
 
