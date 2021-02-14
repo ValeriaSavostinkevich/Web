@@ -140,7 +140,7 @@
         <button id='C' onClick={clck} className='passivebutton'>{REGIM.C}</button>
        
       </nav>
-    }; //<button id='E' onClick={clck} className='passivebutton'>{REGIM.E}</button>
+    }; 
 
     class Panel extends React.Component {
       state = { currentstudent: null, currentcompany: null };
@@ -205,8 +205,6 @@
           </div>
         );
       }
-            // { (this.props.regim == REGIM.E) && <Events data={Data_Events} currentevent={this.updateCurrentEvent} />}
-            // { (this.props.regim == REGIM.E) && <Evs data={Data_Events} currentevent={this.state.currentevent} />}
     }
 
     class Students extends React.Component {
@@ -293,13 +291,13 @@
         let flag = this.state.currentstudent != null;
 
         let menu = <div className='optmenu'>
-          {!this.flagx() && <button id='add' title='Add student'><img src='images/add.png' alt='add' onClick={this.addobc} /></button>}
+          {!this.flagx() && <button id='add' title='Add student' onClick={this.addobc}><img src='images/add.png' alt='add'  /></button>}
 
-          {!this.flagx() && flag && <button id='delete' title='Delete student'><img src='images/remove.png' alt='delete' onClick={this.deleteobc} /></button>}
+          {!this.flagx() && flag && <button id='delete' title='Delete student' onClick={this.deleteobc}><i className = "fas fa-sync-alt fa-spin"/></button>}
 
-          {!this.flagx() && flag && <button id='update' title='Update student'><img src='images/update.png' alt='update' onClick={this.updateobc} /></button>}
+          {!this.flagx() && flag && <button id='update' title='Update student' onClick={this.updateobc}><i className = "fas fa-sync-alt fa-spin"/></button>}
 
-          {!this.flagx() && <button id="find" onClick={this.sortobc} alt='find'><img src="images/icons8_find.png"/></button>}
+          {!this.flagx() && <button id="find" onClick={this.sortobc} alt='find'><i className = "fas fa-sync-alt fa-spin"/></button>}
         </div>
 
         if (Array.isArray(this.state.students)) {
@@ -836,13 +834,13 @@ class Sort_Company extends React.Component{
         let createlist = null;
         let flag = this.state.currentcompany != null;
         let menu = <div className='optmenu'>
-          {!this.flagx() && <button id='add' title='Add company'><img src='images/add.png' alt='add' onClick={this.addobc} /></button>}
+          {!this.flagx() && <button id='add' title='Add company' onClick={this.addobc} ><i className = "fas fa-sync-alt fa-spin"/></button>}
 
-          {!this.flagx() && flag && <button id='delete' title='Delete company'><img src='images/remove.png' alt='delete' onClick={this.deleteobc} /></button>}
+          {!this.flagx() && flag && <button id='delete' title='Delete company' onClick={this.deleteobc}><i className = "fas fa-sync-alt fa-spin"/></button>}
 
-          {!this.flagx() && flag && <button id='update' title='Update company'><img src='images/update.png' alt='update' onClick={this.updateobc} /></button>}
+          {!this.flagx() && flag && <button id='update' title='Update company' onClick={this.updateobc}><i className = "fas fa-sync-alt fa-spin"/></button>}
 
-          {!this.flagx() && <button id="find" alt='find'><img src="images/icons8_find.png" onClick={this.sortobc}/></button>}
+          {!this.flagx() && <button id="find" alt='find' onClick={this.sortobc}><i className = "fas fa-sync-alt fa-spin"/></button>}
         </div>
 
         if (Array.isArray(this.state.companies)) {
