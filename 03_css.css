@@ -1,0 +1,123 @@
+body { margin: 5px; }
+
+.app {
+	margin: 10px 10px 2px 10px;
+}
+
+ul {
+	list-style: none;
+	margin: 0 auto;
+}
+
+nav {
+	display: block;
+	width: 1002px;
+	background: #FDC6DB;
+}
+
+.menu button {
+	margin: 5px;
+	width: 100px;
+	padding: 10px;
+	background: #FDC6DB;
+	border: none;
+	color: black;
+	font-size: 16px;
+	font-weight: 100;
+	display: inline;
+	border-radius: 3px;
+	text-align:center;
+}
+
+.optmenu {
+	padding-left: 10px;
+	display: block;
+	width: 305px;
+	background: white;
+	border: 1px solid black;
+}
+
+.opstudent, .opcompany {
+	background: white;
+	width: 317px;
+	border: 1px solid black;
+	padding: 5px;
+}
+
+
+
+	.optmenu button {
+		background: white;
+		border: none;
+		color: black;
+		display: inline;
+		border-radius: 3px;
+	}
+
+
+.panel {
+	margin-top: 5px;
+	width: 990px;
+	border: 1px solid black;
+	padding: 5px;
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+}
+
+.students, .companies{
+	grid-column-start: 1;
+	grid-column-end: 1;
+	grid-row-start: 1;
+	grid-row-end: 3;
+	/* background: #FDC6DB; */
+	overflow-y: scroll;
+	height: 600px;
+	width:335px;
+} 
+
+.student_list, .company_list{
+	width: 310px;
+}
+
+.student_list button, .company_list button {
+	margin: 5px;
+	width: 310px;
+	padding: 10px;
+	background: #FDC6DB;
+	border: none;
+	color: black;
+	font-size: 16px;
+	font-weight: 100;
+	display: block;
+	border-radius: 3px;
+	text-align: justify;
+}
+
+.student_events,  .company_events{
+	width: 635px;
+	padding: 10px;
+	border: solid 1px;
+	color: black;
+	font-size: 16px;
+	font-weight: 100;
+	text-align: justify;
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 1;
+	grid-row-end: 3;
+}
+
+input:invalid+span:after {
+    content: '✖';
+    padding-left: 5px;
+}
+
+input:valid+span:after {
+    content: '✓';
+    padding-left: 5px;
+}
+
+nav {
+	display: block;
+	background: #FDC6DB;
+}
