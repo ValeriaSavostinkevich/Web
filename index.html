@@ -4,13 +4,20 @@
 <head>
   <meta charset="UTF-8" />
   <title>РДWП-Лабораторная 02</title>
-  <link rel="stylesheet" type="text/css" href="03_css.css">
+  <link rel="stylesheet" type="text/css"
+    href="03_css.css">
 
-  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-	
-  <link href="all.css" rel="stylesheet">
+  <script
+    src="file:///C:/Users/ASUS/Desktop/Study/4k-2s/Разработка динамических web-приложений/Лабораторные работы/ReactFramework/react.development.js"></script>
+  <script
+    src="file:///C:/Users/ASUS/Desktop/Study/4k-2s/Разработка динамических web-приложений/Лабораторные работы/ReactFramework/react-dom.development.js"></script>
+  <script
+    src="file:///C:/Users/ASUS/Desktop/Study/4k-2s/Разработка динамических web-приложений/Лабораторные работы/ReactFramework/babel.min.js"></script>
+  
+    <script
+    src="all.js"></script>
+    <script
+    src="all.min.js"></script>
 </head>
 
 <body>
@@ -140,7 +147,7 @@
         <button id='C' onClick={clck} className='passivebutton'>{REGIM.C}</button>
        
       </nav>
-    }; 
+    }; //<button id='E' onClick={clck} className='passivebutton'>{REGIM.E}</button>
 
     class Panel extends React.Component {
       state = { currentstudent: null, currentcompany: null };
@@ -205,6 +212,8 @@
           </div>
         );
       }
+            // { (this.props.regim == REGIM.E) && <Events data={Data_Events} currentevent={this.updateCurrentEvent} />}
+            // { (this.props.regim == REGIM.E) && <Evs data={Data_Events} currentevent={this.state.currentevent} />}
     }
 
     class Students extends React.Component {
@@ -215,7 +224,7 @@
       }
 
       state = { students: this.props.data, currentstudent: null, sortStud : this.props.sortdata };
-      flagx = () => { return this.state.flagadd || this.state.flagupdate || this.state.flagdelete; };
+      flagx = () => { return this.state.flagadd || this.state.flagupdate || this.state.flagdelete || this.state.flagsort; };
 
       setstudent = (e) => {
         if (!this.flagx()) {
@@ -291,13 +300,13 @@
         let flag = this.state.currentstudent != null;
 
         let menu = <div className='optmenu'>
-          {!this.flagx() && <button id='add' title='Add student' onClick={this.addobc}><img src="pen.svg" /></button>}
+          {!this.flagx() && <button id='add' title='Add student' onClick={this.addobc}><i className = "fas fa-plus"/></button>}
 
-          {!this.flagx() && flag && <button id='delete' title='Delete student' onClick={this.deleteobc}><i className = "fas fa-sync-alt fa-spin"/></button>}
+          {!this.flagx() && flag && <button id='delete' title='Delete student' onClick={this.deleteobc}><i className = "fas fa-minus"/></button>}
 
-          {!this.flagx() && flag && <button id='update' title='Update student' onClick={this.updateobc}><i className = "fas fa-sync-alt fa-spin"/></button>}
+          {!this.flagx() && flag && <button id='update' title='Update student' onClick={this.updateobc}><i className = "fas fa-edit"/></button>}
 
-          {!this.flagx() && <button id="find" onClick={this.sortobc} alt='find'><i className = "fas fa-sync-alt fa-spin"/></button>}
+          {!this.flagx() && <button id="find" title='Find student' onClick={this.sortobc}><i className = "fas fa-search"/></button>}
         </div>
 
         if (Array.isArray(this.state.students)) {
@@ -581,6 +590,7 @@ class Sort_Company extends React.Component{
         super(props);
       }
 
+      flagx = () => { return this.state.flagadd || this.state.flagupdate || this.state.flagdelete; };
       state = { events: this.props.data, currentevent: null, eventid: null };
 
       addobc = (e) => { this.setState({ flagadd: true }) };
@@ -628,9 +638,9 @@ class Sort_Company extends React.Component{
             this.props.data.map((item, index) => {
               if (item.student.id == this.props.currentstudent.id) {
                 return  <div className='event' key={item.id}>
-                        <button id={item.id} title='Update event' onClick={this.updateobc}><i className = "fas fa-sync-alt fa-spin"/></button>
-                        <button id={item.id} title='Delete event' onClick={this.deleteobc}><i className = "fas fa-sync-alt fa-spin"/></button>
-                        <p key={item.id}>{item.id}: {item.date} {item.company != null ? ', ' + item.company.name : null}, {item.text}</p>
+                  {!this.flagx() && <button className='event_button' id={item.id} title='Update event' onClick={this.updateobc}><i className = "fas fa-edit"/></button>}
+                  {!this.flagx() && <button className='event_button' id={item.id} title='Delete event' onClick={this.deleteobc}><i className = "fas fa-minus"/></button>}
+                        <span key={item.id}>{item.id}: {item.date} {item.company != null ? ', ' + item.company.name : null}, {item.text}</span>
                         {this.state.flagupdate && (this.state.eventid==item.id) && <Update_Student_Event currevent={item} update={this.update} updatecancel={this.updatecancel} datacompany={Data_Companies} />}
                         {this.state.flagdelete && (this.state.eventid==item.id) && <Delete_Student_Event currevent={item} delete={this.delete} deletecancel={this.deletecancel} />}
                         </div>
@@ -640,7 +650,7 @@ class Sort_Company extends React.Component{
 
         return (<div className='student_events'>
           {h3}
-          {(this.props.currentstudent != null) && <button title='Add event' onClick={this.addobc}><i className = "fas fa-sync-alt fa-spin"/></button>}
+          {(this.props.currentstudent != null) && <button className='add_event' title='Add event' onClick={this.addobc}><i className = "fas fa-plus"/></button>}
           {this.state.flagadd && addevent}
           {createevents}
         </div>
@@ -723,7 +733,7 @@ class Sort_Company extends React.Component{
 
       render() {
         const { id, text, company, date, student } = this.props.currevent;
-        return <table className='opstudent'>
+        return <table >
           <thead>
             <tr><th colSpan='2'>Update Event for ({student.name})</th></tr>
           </thead>
@@ -773,7 +783,7 @@ class Sort_Company extends React.Component{
     class Companies extends React.Component {
 
       state = { companies: this.props.data, sortComp : this.props.sortdata, flagsort : false, flagSortArray : false };
-      flagx = () => { return this.state.flagadd || this.state.flagupdate || this.state.flagdelete; };
+      flagx = () => { return this.state.flagadd || this.state.flagupdate || this.state.flagdelete  || this.state.flagsort; };
 
       setcompany = (e) => {
         if (!this.flagx()) {
@@ -834,13 +844,13 @@ class Sort_Company extends React.Component{
         let createlist = null;
         let flag = this.state.currentcompany != null;
         let menu = <div className='optmenu'>
-          {!this.flagx() && <button id='add' title='Add company' onClick={this.addobc} ><i className = "fas fa-sync-alt fa-spin"/></button>}
+          {!this.flagx() && <button id='add' title='Add company' onClick={this.addobc}><i className = "fas fa-plus"/></button>}
 
-          {!this.flagx() && flag && <button id='delete' title='Delete company' onClick={this.deleteobc}><i className = "fas fa-sync-alt fa-spin"/></button>}
+          {!this.flagx() && flag && <button id='delete' title='Delete company' onClick={this.deleteobc}><i className = "fas fa-minus"/></button>}
 
-          {!this.flagx() && flag && <button id='update' title='Update company' onClick={this.updateobc}><i className = "fas fa-sync-alt fa-spin"/></button>}
+          {!this.flagx() && flag && <button id='update' title='Update company' onClick={this.updateobc}><i className = "fas fa-edit"/></button>}
 
-          {!this.flagx() && <button id="find" alt='find' onClick={this.sortobc}><i className = "fas fa-sync-alt fa-spin"/></button>}
+          {!this.flagx() && <button id="find" title='Find company' onClick={this.sortobc}><i className = "fas fa-search"/></button>}
         </div>
 
         if (Array.isArray(this.state.companies)) {
@@ -1034,8 +1044,8 @@ class Sort_Company extends React.Component{
               if (item.company != null) {
                 if (item.company.id == this.props.currentcompany.id) {
                   return <div className='event' key={item.id}>
-                        <button id={item.id} title='Update event' onClick={this.updateobc}><i className = "fas fa-sync-alt fa-spin"/></button>
-                        <button id={item.id} title='Delete event' onClick={this.deleteobc}><i className = "fas fa-sync-alt fa-spin"/></button>
+                        <button id={item.id} title='Update event' onClick={this.updateobc}><i className = "fas fa-edit"/></button>
+                        <button id={item.id} title='Delete event' onClick={this.deleteobc}><i className = "fas fa-minus"/></button>
                         <p key={item.id}>{item.id}: {item.date} , {item.student.name}, {item.text}</p>
                         {this.state.flagupdate && (this.state.eventid==item.id) && <Update_Company_Event currevent={item} update={this.update} updatecancel={this.updatecancel} datastudents={Data_Students} />}
                         {this.state.flagdelete && (this.state.eventid==item.id) && <Delete_Company_Event currevent={item} delete={this.delete} deletecancel={this.deletecancel} />}
@@ -1047,7 +1057,7 @@ class Sort_Company extends React.Component{
 
         return (<div className='company_events'>
           {h3}
-          {(this.props.currentcompany != null) && <button title='Add event' onClick={this.addobc}><i className = "fas fa-sync-alt fa-spin"/></button>}
+          {(this.props.currentcompany != null) && <button title='Add event' onClick={this.addobc}><i className = "fas fa-plus"/></button>}
           {this.state.flagadd && addevent}
           {createevents}
         </div>

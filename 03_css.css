@@ -37,6 +37,30 @@ nav {
 	border: 1px solid black;
 }
 
+.event {
+	padding-left: 10px;
+	display: inline-block;
+	width: 630px;
+	background: white;
+	margin-top: 10px;
+}
+
+.event_button {
+	background: white;
+		border: none;
+		color: black;
+		border-radius: 3px;
+		margin-right: 5px;
+} 
+
+.add_event{
+	background: white;
+		border: none;
+		color: black;
+		border-radius: 3px;
+		margin: 5px;
+}
+
 .opstudent, .opcompany {
 	background: white;
 	width: 317px;
@@ -44,14 +68,19 @@ nav {
 	padding: 5px;
 }
 
-
-
 	.optmenu button {
 		background: white;
 		border: none;
 		color: black;
 		display: inline;
 		border-radius: 3px;
+		height: 30px;
+		width: 30px;
+	}
+
+	svg {
+		height: 30px;
+		width: 30px;
 	}
 
 
